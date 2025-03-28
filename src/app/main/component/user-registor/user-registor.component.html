@@ -1,0 +1,98 @@
+<div class="flex items-center justify-center min-h-screen">
+    <div class="w- p-6 bg-white rounded-lg shadow-lg">
+      <h1 class="text-3xl font-bold text-center mb-6">User Register</h1>
+      
+      <form class="grid grid-cols-3 gap-3" (ngSubmit)="onSubmit()">
+        
+        <div class="col-span-1">
+          <label class="block text-sm font-medium text-gray-600">Title</label>
+          <div class="flex items-center space-x-4">
+            <label class="inline-flex items-center">
+              <input type="radio" name="title" value="Mr" [(ngModel)]="userRegister.title"
+                class="text-blue-600 border-gray-300 focus:ring-blue-500" />
+              <span class="ml-2 text-gray-700">Mr</span>
+            </label>
+            <label class="inline-flex items-center">
+              <input type="radio" name="title" value="Mrs" [(ngModel)]="userRegister.title"
+                class="text-blue-600 border-gray-300 focus:ring-blue-500" />
+              <span class="ml-2 text-gray-700">Mrs</span>
+            </label>
+            <label class="inline-flex items-center">
+                <input type="radio" name="title" value="Miss" [(ngModel)]="userRegister.title"
+                  class="text-blue-600 border-gray-300 focus:ring-blue-500" />
+                <span class="ml-2 text-gray-700">Miss</span>
+            </label>
+          </div>
+        </div>
+  
+        <div class=" col-span-1">
+          <label class="block mb-2 text-sm font-medium text-gray-600">First Name</label>
+          <input type="text" name="firstName" [(ngModel)]="userRegister.userFirst"
+            class="w-full px-3 py-2 mb-3 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" />
+        </div>
+  
+        <div class=" col-span-1">
+          <label class="block mb-2 text-sm font-medium text-gray-600">Last Name</label>
+          <input type="text" name="lastName" [(ngModel)]="userRegister.userLast"
+            class="w-full px-3 py-2 mb-3 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" />
+        </div>
+        
+        <div class="mb-2 col-span-1">
+          <label class="block mb-2 text-sm font-medium text-gray-600">Gender</label>
+          <select name="gender" [(ngModel)]="userRegister.userGender"
+            class="w-full px-3 py-2 border rounded shadow appearance-none focus:outline-none focus:shadow-outline">
+            <option value="" disabled selected>Select Gender</option>
+            <option value="0">Male</option>
+            <option value="1">Female</option>
+          </select>
+        </div>
+
+        <div class="mb-2 col-span-2">
+          <label class="block mb-2 text-sm font-medium text-gray-600">Password</label>
+          <input type="password" name="password" [(ngModel)]="userRegister.password"
+            class="w-full px-3 py-2 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" />
+        </div>
+
+        <div class="mb-2 col-span-1">
+          <label class="block mb-2 text-sm font-medium text-gray-600">Date of Birth</label>
+          <input type="date" name="date" [(ngModel)]="userRegister.userDob"
+            class="w-full px-3 py-1 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" />
+        </div>
+
+        <div class="mb-2 col-span-2">
+          <label class="block mb-2 text-sm font-medium text-gray-600">Remark</label>
+          <textarea name="remark" [(ngModel)]="userRegister.remark"
+          class="w-full px-3 py-2 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"></textarea>
+        </div>
+
+        <div class="mb-2 col-span-1">
+          <label class="block mb-2 text-sm font-medium text-gray-600">First Image</label>
+          <div *ngIf="imagePreview1">
+            <img [src]="imagePreview1" alt="Image Preview 1" class="mt-2 w-32 h-32 object-cover rounded border">
+          </div>
+          <input type="file" name="image1" accept="image/jpeg" (change)="onFileChange($event, 1)" class="w-full py-1 border rounded shadow" />
+        </div>
+        
+        <div class="mb-2 col-span-1">
+          <label class="block mb-2 text-sm font-medium text-gray-600">Second Image</label>
+          <div *ngIf="imagePreview2">
+            <img [src]="imagePreview2" alt="Image Preview 2" class="mt-2 w-32 h-32 object-cover rounded border">
+          </div>
+          <input type="file" name="image2" accept="image/jpeg" (change)="onFileChange($event, 2)" class="w-full py-1 border rounded shadow" />
+        </div>
+  
+        <div class="flex justify-center col-span-3 mb-2 ">
+          <button type="submit"
+            class="w-1/2 px-4 py-3 text-white bg-blue-900 rounded-lg shadow hover:bg-blue-900 transition">
+            Register
+          </button>
+        </div>
+        <div class="flex justify-center col-span-3 mb-2 ">
+          <p class="text-sm text-gray-600">Already have an account?</p>
+          <a class="mb-2 text-sm font-medium text-blue-600 hover:underline"
+            [routerLink]="['/user-login']">Login</a>
+        </div>
+      </form>
+    </div>
+  </div>
+  

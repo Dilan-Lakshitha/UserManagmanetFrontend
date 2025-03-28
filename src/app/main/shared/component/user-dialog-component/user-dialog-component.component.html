@@ -1,0 +1,174 @@
+<div class="flex items-center justify-center">
+  <div class="w-full bg-white rounded-lg shadow-lg">
+    <div class="mb-4 bg-blue-900 text-white rounded shadow-lg p-2 relative">
+      <div class="absolute top-0 right-0 p-2">
+        <button
+          mat-icon-button
+          (click)="onClose('close')"
+          class="text-gray-500 hover:text-gray-700 focus:outline-none">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+      <h1 class="text-3xl font-bold text-center m-6">User Details</h1>
+    </div>
+
+    <form class="grid grid-cols-3 gap-3 p-6" (ngSubmit)="onSubmit()">
+
+      <div class="col-span-3">
+        <div class="grid grid-cols-2 gap-4 p-1">
+          <div class="flex flex-col items-center">
+            <label class="block mb-2 text-sm font-medium text-gray-600">First Image</label>
+      
+            <div class="relative w-32 h-32">
+              <img *ngIf="imagePreview1" [src]="imagePreview1" class="w-32 h-32 object-cover rounded-full border-4 border-gray-300 shadow-md" />
+              <div *ngIf="!imagePreview1" class="w-32 h-32 flex items-center justify-center bg-gray-200 text-gray-500 rounded-full border-4 border-gray-300 shadow-md">
+                No Image
+              </div>
+              
+              <label class="absolute bottom-2 right-2 bg-blue-600 p-2 rounded-full shadow-lg cursor-pointer hover:bg-blue-700 transition">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7v14"></path>
+                </svg>
+                <input type="file" name="image1" accept="image/jpeg" (change)="onFileChange($event, 1)" class="hidden" />
+              </label>
+      
+              <button *ngIf="imagePreview1" (click)="removeImage(1)" class="absolute top-2 right-2 bg-red-500 text-white p-1 rounded-full shadow-lg text-xs">
+                ✕
+              </button>
+            </div>
+          </div>
+      
+          <div class="flex flex-col items-center">
+            <label class="block mb-2 text-sm font-medium text-gray-600">Second Image</label>
+      
+            <div class="relative w-32 h-32">
+              <img *ngIf="imagePreview2" [src]="imagePreview2" class="w-32 h-32 object-cover rounded-full border-4 border-gray-300 shadow-md" />
+              <div *ngIf="!imagePreview2" class="w-32 h-32 flex items-center justify-center bg-gray-200 text-gray-500 rounded-full border-4 border-gray-300 shadow-md">
+                No Image
+              </div>
+              
+              <label class="absolute bottom-2 right-2 bg-blue-600 p-2 rounded-full shadow-lg cursor-pointer hover:bg-blue-700 transition">
+                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7v14"></path>
+                </svg>
+                <input type="file" name="image2" accept="image/jpeg" (change)="onFileChange($event, 2)" class="hidden" />
+              </label>
+      
+              <button *ngIf="imagePreview2" (click)="removeImage(2)" class="absolute top-2 right-2 bg-red-500 text-white p-1 rounded-full shadow-lg text-xs">
+                ✕
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-span-1">
+        <label class="block text-sm font-medium text-gray-600">Title</label>
+        <div class="flex items-center space-x-4">
+          <label class="inline-flex items-center">
+            <input
+              type="radio"
+              name="title"
+              value="Mr"
+              [(ngModel)]="userUpdate.title"
+              class="text-blue-600 border-gray-300 focus:ring-blue-500"
+            />
+            <span class="ml-2 text-gray-700">Mr</span>
+          </label>
+          <label class="inline-flex items-center">
+            <input
+              type="radio"
+              name="title"
+              value="Mrs"
+              [(ngModel)]="userUpdate.title"
+              class="text-blue-600 border-gray-300 focus:ring-blue-500"
+            />
+            <span class="ml-2 text-gray-700">Mrs</span>
+          </label>
+          <label class="inline-flex items-center">
+            <input
+              type="radio"
+              name="title"
+              value="Miss"
+              [(ngModel)]="userUpdate.title"
+              class="text-blue-600 border-gray-300 focus:ring-blue-500"
+            />
+            <span class="ml-2 text-gray-700">Miss</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="col-span-1">
+        <label class="block mb-2 text-sm font-medium text-gray-600"
+          >First Name</label
+        >
+        <input
+          type="text"
+          name="firstName"
+          [(ngModel)]="userUpdate.userFirst"
+          class="w-full px-3 py-2 mb-3 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+        />
+      </div>
+
+      <div class="col-span-1">
+        <label class="block mb-2 text-sm font-medium text-gray-600"
+          >Last Name</label
+        >
+        <input
+          type="text"
+          name="lastName"
+          [(ngModel)]="userUpdate.userLast"
+          class="w-full px-3 py-2 mb-3 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+        />
+      </div>
+
+      <div class="mb-2 col-span-1">
+        <label class="block mb-2 text-sm font-medium text-gray-600"
+          >Gender</label
+        >
+        <select
+          name="gender"
+          [(ngModel)]="userUpdate.userGender"
+          class="w-full px-3 py-2 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+        >
+          <option value="" disabled selected>Select Gender</option>
+          <option value="0">Male</option>
+          <option value="1">Female</option>
+        </select>
+      </div>
+
+      <div class="mb-2 col-span-2">
+        <label class="block mb-2 text-sm font-medium text-gray-600"
+          >Date of Birth</label
+        >
+        <input
+          type="date"
+          name="date"
+          [ngModel]="userUpdate.userDob ? (userUpdate.userDob | date:'yyyy-MM-dd') : ''"
+          class="w-full px-3 py-1 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+        />
+      </div>
+
+      <div class="mb-2 col-span-3">
+        <label class="block mb-2 text-sm font-medium text-gray-600"
+          >Remark</label
+        >
+        <textarea
+          name="remark"
+          [(ngModel)]="userUpdate.remark"
+          class="w-full px-3 py-2 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+        ></textarea>
+      </div>
+           
+
+      <div class="flex justify-center border-t p-2 col-span-3">
+        <button
+          type="submit"
+          class="w-1/2 px-2 py-2 text-white bg-blue-900 rounded-lg shadow hover:bg-blue-900 transition"
+        >
+          Update
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

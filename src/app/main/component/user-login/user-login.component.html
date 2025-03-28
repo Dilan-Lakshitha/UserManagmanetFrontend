@@ -1,0 +1,32 @@
+<div class="flex items-center justify-center min-h-screen">
+    <div class="w-96 p-6 bg-white rounded-lg shadow-lg">
+      <h1 class="text-3xl font-bold text-center mb-6">User Login</h1>
+      
+      <form class="mb-2" (ngSubmit)="onSubmit()">
+        <div class=" col-span-1">
+          <label class="block mb-2 text-sm font-medium text-gray-600">First Name</label>
+          <input type="text" name="firstName" placeholder="Use first name" [(ngModel)]="userLogin.name"
+            class="w-full px-3 py-2 mb-3 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" />
+        </div>
+
+        <div class="mb-2 col-span-2">
+          <label class="block mb-2 text-sm font-medium text-gray-600">Password</label>
+          <input type="password" name="password" [(ngModel)]="userLogin.password"
+            class="w-full px-3 py-2 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" />
+        </div>
+  
+        <div class="flex justify-center col-span-3 mb-2 ">
+          <button type="submit"
+            class="w-1/2 px-4 py-3 text-white bg-blue-900 rounded-lg shadow hover:bg-blue-900 transition">
+            Login
+          </button>
+        </div>
+        <div>
+          <p class="text-sm text-center text-gray-600">Don't have an account? 
+            <a [routerLink]="['//user-register']"
+              class="text-blue-900 hover:underline">Register</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+  <p>
