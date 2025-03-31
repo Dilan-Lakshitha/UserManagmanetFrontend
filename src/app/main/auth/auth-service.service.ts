@@ -30,6 +30,10 @@ export class AuthServiceService {
     );
   }
 
+  deleteUserImage(photoId: number) {
+    return this.http.delete(`${this.baseUrl}/userPhoto/${photoId}`);
+  }
+
   updateUser(userId: number, user: UserUpdate): Observable<any> {
     return this.http.put(`${this.baseUrl}/user/update/${userId}`, user);
   }

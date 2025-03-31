@@ -1,0 +1,37 @@
+<div class="w-full bg-white rounded-lg shadow-lg">
+    <div class="text-white rounded-t-lg shadow-lg p-4" [ngClass]="
+    data.buttonColor === 'warn'
+      ? 'bg-red-600 hover:bg-red-700'
+      : 'bg-blue-900 hover:bg-blue-800'
+  ">
+      <h1 class="text-xl font-semibold text-center">{{ data.title }}</h1>
+    </div>
+  
+    <mat-dialog-content class="p-6">
+      <p class="text-gray-700 text-lg font-medium">{{ data.message }}</p>
+    </mat-dialog-content>
+  
+    <mat-dialog-actions 
+      class="flex items-center justify-end space-x-4 border-t p-4 w-full">
+      <button
+        mat-button
+        class="px-4 py-2 text-gray-700 bg-gray-200 hover:bg-gray-300 hover:shadow-md transition"
+        (click)="onCancel()"
+      >
+        Cancel
+      </button>
+      <button
+        mat-button
+        class="px-4 py-2 text-white !important shadow-lg hover:shadow-xl transition"
+        [ngClass]="
+          data.buttonColor === 'warn'
+            ? 'bg-red-600 hover:bg-red-700'
+            : 'bg-blue-900 hover:bg-blue-800'
+        "
+        (click)="onConfirm()"
+      >
+        {{ data.buttonText }}
+      </button>
+    </mat-dialog-actions>
+  </div>
+  

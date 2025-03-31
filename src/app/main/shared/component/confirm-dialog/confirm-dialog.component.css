@@ -1,0 +1,14 @@
+mat-dialog-actions {
+    display: flex !important;
+    justify-content: flex-end !important;
+    width: 100%;
+}
+
+.bg-red-600 {
+    background-color: #b30707 !important;
+}
+
+.text-white {
+    color: #ffffff !important;
+  }
+  
