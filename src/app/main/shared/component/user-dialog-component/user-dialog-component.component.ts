@@ -157,7 +157,7 @@ export class UserDialogComponentComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((confirmed) => {
-      if (confirmed) {
+      if (confirmed === 'deleted') {
         let photoIdToDelete: number | undefined;
 
         if (imageNumber === 1 && this.imagePreview1) {
@@ -173,9 +173,11 @@ export class UserDialogComponentComponent implements OnInit {
         if (photoIdToDelete) {
           this.authService.deleteUserImage(photoIdToDelete).subscribe(
             (response) => {
-              console.log(
-                `Image with photoId ${photoIdToDelete} deleted successfully.`
-              );
+              this.snackBar.open('User Image Deleted successfully!' , 'close', {
+                duration: 3000,
+                horizontalPosition: 'right',
+                verticalPosition: 'bottom',
+              });
             },
             (error) => {
               console.log(

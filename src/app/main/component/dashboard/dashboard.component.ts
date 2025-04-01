@@ -37,6 +37,7 @@ export class DashboardComponent {
     'userFirst',
     'userLast',
     'userDob',
+    'userGender',
     'title',
     'action',
   ];
@@ -72,7 +73,7 @@ export class DashboardComponent {
   }
 
   applyFilter(): void {
-    let filteredData = this.dataSource.data;
+    let filteredData = this.users;
 
     if (this.searchFirstName) {
       filteredData = filteredData.filter((item) =>
@@ -100,13 +101,7 @@ export class DashboardComponent {
       );
     }
 
-    // if (this.genderFilter) {
-    //   filteredData = filteredData.filter(item =>
-    //     item.userGender === this.genderFilter
-    //   );
-    // }
-
-    this.filteredDataSource = new MatTableDataSource(filteredData);
+    this.dataSource.data = filteredData;
     this.filteredDataSource.paginator = this.paginator;
   }
 

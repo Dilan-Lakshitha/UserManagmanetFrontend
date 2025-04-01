@@ -5,53 +5,42 @@
     <button
       (click)="openDialog()"
       class="rounded-full bg-indigo-900 text-white font-semibold px-4 py-3"
-    >
-    </button>
+    ></button>
   </div>
 
   <div class="flex mb-4 space-x-4">
-    <input 
+    <input
       matInput
-      placeholder="Search First Name" 
-      [(ngModel)]="searchFirstName" 
+      placeholder="Search First Name"
+      [(ngModel)]="searchFirstName"
       (ngModelChange)="applyFilter()"
       class="p-2 border border-gray-300 rounded-md"
     />
 
-    <input 
+    <input
       matInput
-      placeholder="Search Last Name" 
-      [(ngModel)]="searchLastName" 
+      placeholder="Search Last Name"
+      [(ngModel)]="searchLastName"
       (ngModelChange)="applyFilter()"
       class="p-2 border border-gray-300 rounded-md"
     />
 
-    <input 
+    <input
       matInput
-      placeholder="DOB From" 
-      [(ngModel)]="dobFrom" 
-      (ngModelChange)="applyFilter()" 
+      placeholder="DOB From"
+      [(ngModel)]="dobFrom"
+      (ngModelChange)="applyFilter()"
       type="date"
       class="p-2 border border-gray-300 rounded-md"
     />
-    <input 
+    <input
       matInput
-      placeholder="DOB To" 
-      [(ngModel)]="dobTo" 
-      (ngModelChange)="applyFilter()" 
+      placeholder="DOB To"
+      [(ngModel)]="dobTo"
+      (ngModelChange)="applyFilter()"
       type="date"
       class="p-2 border border-gray-300 rounded-md"
     />
-
-    <select 
-      [(ngModel)]="genderFilter" 
-      (ngModelChange)="applyFilter()" 
-      class="p-2 border border-gray-300 rounded-md"
-    >
-      <option value="">All Genders</option>
-      <option value="Male">Male</option>
-      <option value="Female">Female</option>
-    </select>
   </div>
 
   <div class="border rounded-lg border-gray-300 rounded-lg shadow-lg">
@@ -85,7 +74,16 @@
         <ng-container matColumnDef="userDob">
           <th mat-header-cell *matHeaderCellDef class="sticky-header">DOB</th>
           <td mat-cell *matCellDef="let emp" class="border-b border-gray-300">
-            {{ emp.userDob || "Administrator" }}
+            {{ emp.userDob ? (emp.userDob | date : "yyyy-MM-dd") : "" }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="userGender">
+          <th mat-header-cell *matHeaderCellDef class="sticky-header">
+            Gender
+          </th>
+          <td mat-cell *matCellDef="let emp" class="border-b border-gray-300">
+            {{ emp.userGender === 0 ? "Male" : "Female" }}
           </td>
         </ng-container>
 

@@ -32,7 +32,7 @@
                 <input type="file" name="image1" accept="image/jpeg" (change)="onFileChange($event, 1)" class="hidden" />
               </label>
       
-              <button *ngIf="imagePreview1" (click)="removeImage(1)" class="absolute top-2 right-2 bg-red-500 text-white p-1 rounded-full shadow-lg text-xs">
+              <button *ngIf="imagePreview1"  type="button" (click)="removeImage(1)" class="absolute top-2 right-2 bg-red-500 text-white p-1 rounded-full shadow-lg text-xs">
                 ✕
               </button>
             </div>
@@ -54,7 +54,7 @@
                 <input type="file" name="image2" accept="image/jpeg" (change)="onFileChange($event, 2)" class="hidden" />
               </label>
       
-              <button *ngIf="imagePreview2" (click)="removeImage(2)" class="absolute top-2 right-2 bg-red-500 text-white p-1 rounded-full shadow-lg text-xs">
+              <button *ngIf="imagePreview2"  type="button" (click)="removeImage(2)" class="absolute top-2 right-2 bg-red-500 text-white p-1 rounded-full shadow-lg text-xs">
                 ✕
               </button>
             </div>

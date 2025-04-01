@@ -16,8 +16,8 @@ export class ConfirmDialogComponent {
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
-  onConfirm(): void {
-    this.dialogRef.close(true);
+  onConfirm(deleted:string): void {
+    this.dialogRef.close(deleted);
   }
 
   onCancel(): void {
